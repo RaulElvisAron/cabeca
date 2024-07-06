@@ -1,0 +1,402 @@
+/* src/styles.css */
+.search-container {
+  z-index: 1000;
+  position: absolute;
+  top: 10px;
+  left: 50px; /* Ancorado à esquerda com uma distância de 50px */
+  right: 10px; /* Ancorado à direita */
+  background: white;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+}
+
+.search-container input {
+  padding: 5px;
+  width: 100%; /* Ajustar a largura para 100% do contêiner */
+  box-sizing: border-box; /* Incluir o padding e border no cálculo da largura */
+}
+
+.search-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: white;
+  width: 100%; /* Ajustar a largura para 100% do contêiner */
+  position: absolute;
+  top: 35px;
+  left: 0;
+  z-index: 1000;
+  max-height: 200px; /* Altura máxima para a lista */
+  overflow-y: auto; /* Adicionar rolagem vertical se necessário */
+}
+
+.search-container ul li {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.search-container ul li.active {
+  background-color: #d3d3d3; /* Cor de fundo para a sugestão ativa */
+}
+
+.layer-control {
+  display: none; /* Ocultar a div vazia */
+}
+
+.leaflet-top.leaflet-right {
+  top: 50px;
+}
+
+.info-panel {
+  position: absolute;
+  top: 85px; /* Ajuste conforme necessário para ficar abaixo do campo de seleção de layers */
+  left: 10px;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+  height: 50%;
+  max-height: calc(100vh - 200px);
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden; /* Ocultar o overflow externo */
+}
+
+.info-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  height: 30px;
+}
+
+.info-panel .description {
+  height: calc(100% - 40px); /* Ajuste a altura para não cortar o conteúdo */
+  overflow-y: auto;
+}
+
+.marker-panel {
+  position: absolute;
+  top: 100px; /* Ajuste conforme necessário */
+  left: 10px;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.marker-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  height: 30px;
+}
+
+.marker-panel-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.marker-panel-content label {
+  margin-bottom: 10px;
+}
+
+.marker-panel-content input,
+.marker-panel-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.marker-panel-content input:focus,
+.marker-panel-content textarea:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+.marker-panel-content input[type="checkbox"] {
+  width: auto;
+  margin-top: 0;
+}
+
+.marker-panel-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.marker-panel-actions button {
+  padding: 10px 15px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.marker-panel-actions button:hover {
+  background-color: #e0e0e0;
+}
+
+.marker-panel-actions button:active {
+  background-color: #d0d0d0;
+}
+
+.marker-panel-actions button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.coordinates {
+  position: absolute;
+  bottom: 10px;
+  font-size: 0.8em;
+  color: #888;
+}
+
+/* Estilização dos checkboxes */
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Botões gerais */
+button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+/* Estilização para inputs e textareas */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+/* Estilização do combobox */
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><path fill='none' stroke='black' stroke-width='2' d='M7 7l5 5 5-5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+select:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 800px) {
+  .search-container {
+    left: 10px;
+    right: 10px;
+  }
+
+  .search-container input,
+  .search-container ul {
+    width: 100%; /* Ajustar a largura para 100% do contêiner */
+  }
+}
+
+.info-container {
+  z-index: 1000;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.info-item {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.info-item label {
+  margin-right: 5px;
+}
+
+.controls select {
+  padding: 5px;
+}
+
+.dice-roller-panel {
+  position: absolute;
+  top: 100px; /* Ajuste conforme necessário */
+  left: 10px;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.dice-roller-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  height: 30px;
+}
+
+.dice-roller-panel-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.dice-roller-panel-content label {
+  margin-bottom: 10px;
+}
+
+.dice-roller-panel-content input,
+.dice-roller-panel-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.dice-roller-panel-content input:focus,
+.dice-roller-panel-content textarea:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+.dice-roller-panel-content input[type="checkbox"] {
+  width: auto;
+  margin-top: 0;
+}
+
+.dice-roller-panel-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.dice-roller-panel-actions button {
+  padding: 10px 15px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dice-roller-panel-actions button:hover {
+  background-color: #e0e0e0;
+}
+
+.dice-roller-panel-actions button:active {
+  background-color: #d0d0d0;
+}
+
+.dice-roller-panel-actions button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+#dice-box,
+#dice-box canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.dice-roller {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dice-button {
+  padding: 10px;
+  margin: 5px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.dice-button:hover {
+  background-color: #e0e0e0;
+}
+
+.dice-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}

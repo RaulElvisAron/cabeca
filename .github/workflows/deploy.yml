@@ -1,0 +1,77 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Build the project
+      run: yarn build
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
+
+  deploy_preview:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Build the project
+      run: yarn build
+
+    - name: Deploy preview to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
+        destination_dir: preview/${{ github.event.pull_request.number }}
+
+  cleanup_preview:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Remove preview directory
+      run: |
+        PR_NUMBER=$(git log -1 --pretty=%B | sed -n 's/.*(#\([0-9]*\)).*/\1/p')
+        if [ -n "$PR_NUMBER" ]; then
+          git rm -r --ignore-unmatch preview/$PR_NUMBER
+          git commit -m "Remove preview for PR #$PR_NUMBER"
+          git push origin gh-pages
+        fi

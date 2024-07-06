@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/zolda-interactive-map/static/css/main.6341e393.css",
+    "main.js": "/zolda-interactive-map/static/js/main.b68a9e15.js",
+    "static/js/453.d3735218.chunk.js": "/zolda-interactive-map/static/js/453.d3735218.chunk.js",
+    "index.html": "/zolda-interactive-map/index.html",
+    "main.6341e393.css.map": "/zolda-interactive-map/static/css/main.6341e393.css.map",
+    "main.b68a9e15.js.map": "/zolda-interactive-map/static/js/main.b68a9e15.js.map",
+    "453.d3735218.chunk.js.map": "/zolda-interactive-map/static/js/453.d3735218.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6341e393.css",
+    "static/js/main.b68a9e15.js"
+  ]
+}
