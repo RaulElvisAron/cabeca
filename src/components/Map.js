@@ -6,7 +6,6 @@ import Search from './Search';
 import AddMarker from './AddMarker';
 import DistanceInfo from './DistanceInfo';
 import InfoPanel from './InfoPanel';
-import LayerControl from './LayerControl';
 import { firstMarkerIcon, subsequentMarkerIcon } from './MarkerIcon';
 import MarkerPanel from './MarkerPanel';
 import AddPin from './AddPin';
